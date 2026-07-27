@@ -13,7 +13,7 @@ export function ContactSection() {
       gsap.from(containerRef.current, {
         opacity: 0,
         y: 40,
-        duration: 1,
+        duration: 0.9,
         ease: "power3.out",
       });
     },
@@ -26,122 +26,205 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" ref={containerRef} className="py-24 px-6 bg-slate-950 border-t border-slate-900 relative">
-      <div className="max-w-7xl mx-auto space-y-16">
-        <div className="text-center space-y-4">
-          <span className="text-xs font-mono font-semibold uppercase tracking-wider text-cyan-400">
-            Get In Touch
+    <section
+      id="contact"
+      ref={containerRef}
+      className="py-24 px-6 bg-[#f8fafc] text-slate-900 relative overflow-hidden border-b border-slate-200/80"
+    >
+      {/* Background Decorative Blur */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-purple-200/40 blur-[140px] rounded-full pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto space-y-16 relative z-10">
+        {/* Header */}
+        <div className="text-center space-y-3">
+          <span className="text-xs font-mono font-bold text-[#6c47ff] uppercase tracking-wider">
+            — Get In Touch
           </span>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white">
-            Contact & Connect
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900">
+            Contact <span className="text-[#6c47ff]">&</span> Connect
           </h2>
-          <p className="text-slate-400 max-w-xl mx-auto">
+          <p className="text-slate-600 max-w-xl mx-auto text-sm sm:text-base">
             Available for research opportunities, data analytics projects, and software engineering collaborations.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start max-w-5xl mx-auto">
-          {/* Contact Details */}
-          <div className="space-y-6 p-8 rounded-3xl bg-slate-900/50 border border-slate-800">
-            <h3 className="text-2xl font-bold text-white mb-6">
-              Contact Information
-            </h3>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          {/* Left Column: Contact Details & Academic References */}
+          <div className="lg:col-span-5 space-y-6">
+            {/* Contact Card */}
+            <div className="p-8 rounded-[32px] bg-white border border-slate-200/80 shadow-xl space-y-6">
+              <h3 className="text-xl font-extrabold text-slate-900 border-b border-slate-100 pb-4">
+                Contact Information
+              </h3>
 
-            <div className="flex items-center gap-4 text-slate-300">
-              <div className="w-12 h-12 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center text-cyan-400 text-xl">
-                ✉️
-              </div>
-              <div>
-                <p className="text-xs text-slate-400 font-mono">EMAIL</p>
-                <a href="mailto:cit-23-02-0345@sltc.ac.lk" className="text-slate-200 font-semibold hover:text-cyan-400 transition-colors">
-                  cit-23-02-0345@sltc.ac.lk
-                </a>
+              <div className="space-y-5 text-sm text-slate-700">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-purple-50 border border-purple-100 flex items-center justify-center text-[#6c47ff] text-xl font-bold shadow-xs">
+                    ✉️
+                  </div>
+                  <div>
+                    <p className="text-xs font-mono font-bold text-slate-400 uppercase">
+                      EMAIL
+                    </p>
+                    <a
+                      href="mailto:cit-23-02-0345@sltc.ac.lk"
+                      className="font-bold text-slate-900 hover:text-[#6c47ff] transition-colors"
+                    >
+                      cit-23-02-0345@sltc.ac.lk
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-lime-50 border border-lime-100 flex items-center justify-center text-lime-800 text-xl font-bold shadow-xs">
+                    📞
+                  </div>
+                  <div>
+                    <p className="text-xs font-mono font-bold text-slate-400 uppercase">
+                      PHONE
+                    </p>
+                    <a
+                      href="tel:0777637316"
+                      className="font-bold text-slate-900 hover:text-[#6c47ff] transition-colors"
+                    >
+                      0777637316
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-purple-50 border border-purple-100 flex items-center justify-center text-[#6c47ff] text-xl font-bold shadow-xs">
+                    📍
+                  </div>
+                  <div>
+                    <p className="text-xs font-mono font-bold text-slate-400 uppercase">
+                      LOCATION
+                    </p>
+                    <p className="font-bold text-slate-900">
+                      197/A2, Wewa Para, Deheragoda, Ellawala
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-4 text-slate-300">
-              <div className="w-12 h-12 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center text-indigo-400 text-xl">
-                📞
-              </div>
-              <div>
-                <p className="text-xs text-slate-400 font-mono">PHONE</p>
-                <a href="tel:0777637316" className="text-slate-200 font-semibold hover:text-cyan-400 transition-colors">
-                  0777637316
-                </a>
-              </div>
-            </div>
+            {/* Academic References Box */}
+            <div className="p-8 rounded-[32px] bg-slate-900 text-white space-y-4 shadow-xl">
+              <span className="text-xs font-mono font-bold text-purple-300 uppercase tracking-wider block">
+                Academic References
+              </span>
 
-            <div className="flex items-center gap-4 text-slate-300">
-              <div className="w-12 h-12 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-center text-purple-400 text-xl">
-                📍
-              </div>
-              <div>
-                <p className="text-xs text-slate-400 font-mono">LOCATION</p>
-                <p className="text-slate-200 font-semibold">
-                  197/A2, Wewa Para, Deheragoda, Ellawala
-                </p>
+              <div className="space-y-4 text-xs">
+                <div className="border-b border-slate-800 pb-3">
+                  <p className="font-bold text-white text-sm">
+                    Ms. Januki Jyarathne
+                  </p>
+                  <p className="text-slate-400">
+                    Assistant Manager • Faculty of Postgraduate & Research
+                  </p>
+                  <p className="text-purple-300 font-mono mt-1">
+                    januki.j@sltc.ac.lk • 0704762367
+                  </p>
+                </div>
+
+                <div>
+                  <p className="font-bold text-white text-sm">
+                    Mr. Samantha Wikramasingha
+                  </p>
+                  <p className="text-slate-400">
+                    Lecturer-probationary (SLTC)
+                  </p>
+                  <p className="text-purple-300 font-mono mt-1">
+                    samanthaw@sltc.ac.lk • 072-3455846
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Interactive Form */}
-          <div className="p-8 rounded-3xl bg-slate-900/50 border border-slate-800">
-            {submitted ? (
-              <div className="text-center py-12 space-y-4">
-                <div className="w-16 h-16 rounded-full bg-cyan-950 border border-cyan-800 text-cyan-400 flex items-center justify-center text-3xl mx-auto">
-                  ✓
+          {/* Right Column: Interactive Form */}
+          <div className="lg:col-span-7">
+            <div className="p-8 sm:p-10 rounded-[32px] bg-white border border-slate-200/80 shadow-xl">
+              {submitted ? (
+                <div className="text-center py-12 space-y-4">
+                  <div className="w-16 h-16 rounded-full bg-lime-100 border border-lime-300 text-lime-800 flex items-center justify-center text-3xl mx-auto shadow-md">
+                    ✓
+                  </div>
+                  <h4 className="text-2xl font-extrabold text-slate-900">
+                    Message Sent!
+                  </h4>
+                  <p className="text-slate-600 text-sm max-w-md mx-auto">
+                    Thank you for reaching out. Pramudi will review your message and reply promptly.
+                  </p>
                 </div>
-                <h4 className="text-xl font-bold text-white">Message Sent!</h4>
-                <p className="text-slate-400 text-sm">
-                  Thank you for reaching out. Pramudi will get back to you shortly.
-                </p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label className="block text-xs font-mono text-slate-400 mb-1">
-                    YOUR NAME
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="John Doe"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-cyan-500 transition-colors text-sm"
-                  />
-                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-5 text-left">
+                  <h3 className="text-2xl font-extrabold text-slate-900 mb-6">
+                    Send a Message
+                  </h3>
 
-                <div>
-                  <label className="block text-xs font-mono text-slate-400 mb-1">
-                    EMAIL ADDRESS
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="john@example.com"
-                    className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-cyan-500 transition-colors text-sm"
-                  />
-                </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label className="block text-xs font-mono font-bold text-slate-500 uppercase mb-1.5">
+                        YOUR NAME
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="John Doe"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-[#6c47ff] focus:bg-white transition-all text-sm font-medium"
+                      />
+                    </div>
 
-                <div>
-                  <label className="block text-xs font-mono text-slate-400 mb-1">
-                    MESSAGE
-                  </label>
-                  <textarea
-                    required
-                    rows={4}
-                    placeholder="Hi Pramudi, I'd like to discuss a project..."
-                    className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white focus:outline-none focus:border-cyan-500 transition-colors text-sm resize-none"
-                  />
-                </div>
+                    <div>
+                      <label className="block text-xs font-mono font-bold text-slate-500 uppercase mb-1.5">
+                        EMAIL ADDRESS
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="john@example.com"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-[#6c47ff] focus:bg-white transition-all text-sm font-medium"
+                      />
+                    </div>
+                  </div>
 
-                <button
-                  type="submit"
-                  className="w-full py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 font-semibold text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300"
-                >
-                  Send Message
-                </button>
-              </form>
-            )}
+                  <div>
+                    <label className="block text-xs font-mono font-bold text-slate-500 uppercase mb-1.5">
+                      SUBJECT
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Project Inquiry / Research Collaboration"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-[#6c47ff] focus:bg-white transition-all text-sm font-medium"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-mono font-bold text-slate-500 uppercase mb-1.5">
+                      MESSAGE
+                    </label>
+                    <textarea
+                      required
+                      rows={5}
+                      placeholder="Hi Pramudi, I would like to discuss a Data Science project..."
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-[#6c47ff] focus:bg-white transition-all text-sm font-medium resize-none"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full py-4 rounded-full bg-[#a3e635] text-slate-950 font-extrabold text-sm shadow-md hover:bg-lime-300 hover:scale-[1.01] transition-all flex items-center justify-center gap-2"
+                  >
+                    <span>Send Message</span>
+                    <span className="w-5 h-5 rounded-full bg-slate-950 text-white flex items-center justify-center text-[10px] font-bold">
+                      ➔
+                    </span>
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
         </div>
       </div>
