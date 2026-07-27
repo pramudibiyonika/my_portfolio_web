@@ -1,22 +1,25 @@
 export function Footer() {
   return (
-    <footer id="contact" className="py-12 px-6 bg-slate-950 border-t border-slate-900 text-slate-500 text-sm">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer className="py-12 px-6 bg-white border-t border-slate-200 text-slate-600 text-sm">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-indigo-500 flex items-center justify-center font-bold text-white text-xs">
-            FS
+          <div className="w-8 h-8 rounded-xl bg-[#6c47ff] flex items-center justify-center font-bold text-white text-xs shadow-md">
+            PB
           </div>
-          <span className="text-slate-300 font-semibold">Next.js + Tailwind + GSAP Baseline</span>
+          <span className="text-slate-900 font-extrabold tracking-tight">
+            Pramudi<span className="text-[#6c47ff]">.</span>
+          </span>
         </div>
 
-        <p className="text-center md:text-left">
-          © {new Date().getFullYear()} All rights reserved. Built with Next.js App Router, Tailwind CSS & GSAP.
+        <p className="text-center md:text-left text-xs text-slate-500">
+          © {new Date().getFullYear()} Pramudi Biyonika. BSc (Hons) in Data Science • SLTC. Built with Next.js, Tailwind CSS & GSAP.
         </p>
 
-        <div className="flex items-center gap-6">
-          <a href="#" className="hover:text-slate-300 transition-colors">GitHub</a>
-          <a href="#" className="hover:text-slate-300 transition-colors">Documentation</a>
-          <a href="#" className="hover:text-slate-300 transition-colors">Support</a>
+        <div className="flex items-center gap-6 text-xs font-semibold text-slate-600">
+          <a href="#hero" className="hover:text-[#6c47ff] transition-colors">Home</a>
+          <a href="#about" className="hover:text-[#6c47ff] transition-colors">About</a>
+          <a href="#projects" className="hover:text-[#6c47ff] transition-colors">Projects</a>
+          <a href="mailto:cit-23-02-0345@sltc.ac.lk" className="hover:text-[#6c47ff] transition-colors">Email</a>
         </div>
       </div>
     </footer>
