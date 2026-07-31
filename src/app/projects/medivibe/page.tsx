@@ -56,6 +56,7 @@ export default function MediVibeProjectPage() {
               alt="MediVibe Pharmacy Management System Interface"
               fill
               priority
+              unoptimized
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />

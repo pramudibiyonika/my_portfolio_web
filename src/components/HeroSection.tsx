@@ -79,6 +79,7 @@ export function HeroSection() {
                 alt="Pramudi Biyonika Data Scientist"
                 fill
                 priority
+                unoptimized
                 className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
               />
             </div>
