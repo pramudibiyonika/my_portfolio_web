@@ -2,7 +2,12 @@
 
 import { useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export function AboutSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -11,20 +16,33 @@ export function AboutSection() {
 
   useGSAP(
     () => {
-      gsap.from(bioGridRef.current, {
-        opacity: 0,
-        y: 40,
-        duration: 0.9,
-        ease: "power3.out",
-      });
+      if (bioGridRef.current) {
+        gsap.from(bioGridRef.current, {
+          opacity: 0,
+          y: 40,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: bioGridRef.current,
+            start: "top 90%",
+            once: true,
+          },
+        });
+      }
 
-      gsap.from(cardsGridRef.current, {
-        opacity: 0,
-        y: 40,
-        duration: 0.9,
-        delay: 0.3,
-        ease: "power3.out",
-      });
+      if (cardsGridRef.current) {
+        gsap.from(cardsGridRef.current, {
+          opacity: 0,
+          y: 40,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: cardsGridRef.current,
+            start: "top 90%",
+            once: true,
+          },
+        });
+      }
     },
     { scope: containerRef }
   );
@@ -36,12 +54,12 @@ export function AboutSection() {
       className="py-24 px-6 bg-white text-slate-900 border-b border-slate-200/80 relative"
     >
       <div className="max-w-6xl mx-auto space-y-20">
-        {/* Top "Who is Pramudi Biyonika?" Grid (Exact Match to Reference Image 1) */}
+        {/* Top "Who is Pramudi Biyonika?" Grid */}
         <div
           ref={bioGridRef}
           className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center"
         >
-          {/* Left Column: Big Purple Stat Box (Matching Image 1) */}
+          {/* Left Column: Big Purple Stat Box */}
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-sm rounded-[32px] bg-[#6c47ff] p-8 text-white shadow-2xl shadow-purple-500/25 flex flex-col justify-between min-h-[340px] overflow-hidden">
               <div className="space-y-1">
@@ -51,7 +69,6 @@ export function AboutSection() {
                 <p className="text-xs text-purple-300 font-mono">CLASS OF 2027</p>
               </div>
 
-              {/* Big 2027 Number (Direct Reference 1 Match) */}
               <div className="my-6">
                 <span className="text-7xl sm:text-8xl font-extrabold tracking-tighter block leading-none font-mono">
                   2027
@@ -61,7 +78,6 @@ export function AboutSection() {
                 </span>
               </div>
 
-              {/* Vertical Side Label */}
               <div className="pt-4 border-t border-purple-400/30 flex justify-between items-center text-xs font-mono text-purple-200 uppercase tracking-wider">
                 <span>Pramudi Biyonika</span>
                 <span>Data Scientist</span>
@@ -69,7 +85,7 @@ export function AboutSection() {
             </div>
           </div>
 
-          {/* Right Column: Bio Copy, Stats & Action Pills (Exact Match to Image 1) */}
+          {/* Right Column: Bio Copy & Actions */}
           <div className="lg:col-span-7 space-y-6 text-left">
             <span className="text-xs font-mono font-bold text-[#6c47ff] uppercase tracking-wider">
               — About Me
@@ -84,7 +100,6 @@ export function AboutSection() {
               An innovative and analytical undergraduate studying at SLT Research University, graduating in 2027, with a passion for solving complex problems. Hard-working, adaptable, and self-disciplined team worker, eager to contribute to impactful projects and researches.
             </p>
 
-            {/* Quick Stat Counters (Image 1 Layout) */}
             <div className="grid grid-cols-2 gap-6 pt-2 max-w-md">
               <div>
                 <div className="text-3xl font-extrabold text-[#6c47ff] font-mono">
@@ -105,7 +120,6 @@ export function AboutSection() {
               </div>
             </div>
 
-            {/* Download CV Pill Button & Signature (Exact Image 1 Match) */}
             <div className="flex flex-wrap items-center gap-6 pt-4">
               <a
                 href="mailto:cit-23-02-0345@sltc.ac.lk"
@@ -117,7 +131,6 @@ export function AboutSection() {
                 </span>
               </a>
 
-              {/* Styled Signature Badge */}
               <span className="text-xl font-serif italic text-slate-700 font-bold tracking-wide border-b-2 border-[#6c47ff]/40 pb-1">
                 Pramudi Biyonika
               </span>
@@ -125,7 +138,7 @@ export function AboutSection() {
           </div>
         </div>
 
-        {/* Bottom Education & Experience Cards (Exact Match to Image 1 Bottom Layout) */}
+        {/* Bottom Education & Experience Cards */}
         <div ref={cardsGridRef} className="space-y-8 pt-8">
           <div className="text-center space-y-2">
             <span className="text-xs font-mono font-bold text-[#6c47ff] uppercase tracking-wider">
@@ -137,7 +150,6 @@ export function AboutSection() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Card 1: Education */}
             <div className="p-8 rounded-[28px] bg-slate-50 border border-slate-200/80 space-y-6 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-2xl bg-[#6c47ff] text-white flex items-center justify-center text-xl font-bold shadow-md shadow-purple-500/20">
@@ -190,7 +202,6 @@ export function AboutSection() {
               </div>
             </div>
 
-            {/* Card 2: Research & Leadership */}
             <div className="p-8 rounded-[28px] bg-slate-50 border border-slate-200/80 space-y-6 shadow-sm hover:shadow-md transition-shadow">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-2xl bg-[#6c47ff] text-white flex items-center justify-center text-xl font-bold shadow-md shadow-purple-500/20">

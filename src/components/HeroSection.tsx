@@ -71,7 +71,7 @@ export function HeroSection() {
           {/* Purple Background Shape Shield behind Cutout Portrait */}
           <div
             ref={heroCardRef}
-            className="relative w-64 h-72 sm:w-72 sm:h-80 rounded-[36px] bg-[#6c47ff] p-2 shadow-2xl shadow-purple-500/20 flex items-center justify-center group"
+            className="relative w-64 h-72 sm:w-80 sm:h-96 rounded-[36px] bg-[#6c47ff] p-2 shadow-2xl shadow-purple-500/20 flex items-center justify-center group"
           >
             <div className="relative w-full h-full rounded-[28px] overflow-hidden bg-slate-900">
               <Image
@@ -79,7 +79,7 @@ export function HeroSection() {
                 alt="Pramudi Biyonika Data Scientist"
                 fill
                 priority
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
               />
             </div>
 

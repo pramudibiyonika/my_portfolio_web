@@ -2,7 +2,12 @@
 
 import { useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const services = [
   {
@@ -37,18 +42,27 @@ export function TechStackSection() {
     () => {
       gsap.from(headerRef.current, {
         opacity: 0,
-        y: 30,
-        duration: 0.8,
+        y: 40,
+        duration: 0.9,
         ease: "power3.out",
+        scrollTrigger: {
+          trigger: headerRef.current,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
       });
 
       gsap.from(cardsRef.current, {
         opacity: 0,
-        y: 40,
-        duration: 0.8,
-        stagger: 0.15,
-        delay: 0.2,
+        y: 60,
+        duration: 0.9,
+        stagger: 0.18,
         ease: "power3.out",
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 75%",
+          toggleActions: "play none none reverse",
+        },
       });
     },
     { scope: containerRef }
@@ -60,12 +74,10 @@ export function TechStackSection() {
       ref={containerRef}
       className="py-24 px-6 bg-[#6c47ff] text-white relative overflow-hidden border-b border-purple-500/30"
     >
-      {/* Background Decorative Blur Orbs */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-500/20 blur-[130px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-500/20 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-6xl mx-auto space-y-16 relative z-10">
-        {/* Header (Exact Match to Reference Image 1 Services Header) */}
         <div
           ref={headerRef}
           className="flex flex-col md:flex-row md:items-end justify-between gap-6"
@@ -90,7 +102,6 @@ export function TechStackSection() {
           </a>
         </div>
 
-        {/* 3 Service Cards Grid (Exact Match to Reference Image 1 Cards) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((item, idx) => (
             <div
@@ -99,7 +110,6 @@ export function TechStackSection() {
               className="p-8 rounded-[32px] bg-white text-slate-900 shadow-2xl hover:-translate-y-2 transition-transform duration-300 flex flex-col justify-between group"
             >
               <div className="space-y-6">
-                {/* Circular Icon Badge (Image 1 Style) */}
                 <div className="w-16 h-16 rounded-full bg-purple-50 border border-purple-100 flex items-center justify-center text-3xl shadow-inner group-hover:scale-110 transition-transform duration-300">
                   {item.icon}
                 </div>
@@ -118,7 +128,6 @@ export function TechStackSection() {
                 </p>
               </div>
 
-              {/* Card Footer Badges */}
               <div className="pt-6 border-t border-slate-100 mt-6 space-y-4">
                 <div className="flex flex-wrap gap-1.5">
                   {item.tags.map((tag) => (

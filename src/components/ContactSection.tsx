@@ -2,19 +2,43 @@
 
 import { useState, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export function ContactSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const headRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const [submitted, setSubmitted] = useState(false);
 
   useGSAP(
     () => {
-      gsap.from(containerRef.current, {
+      gsap.from(headRef.current, {
         opacity: 0,
         y: 40,
         duration: 0.9,
         ease: "power3.out",
+        scrollTrigger: {
+          trigger: headRef.current,
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
+      gsap.from(contentRef.current, {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: contentRef.current,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
       });
     },
     { scope: containerRef }
@@ -31,12 +55,10 @@ export function ContactSection() {
       ref={containerRef}
       className="py-24 px-6 bg-[#f8fafc] text-slate-900 relative overflow-hidden border-b border-slate-200/80"
     >
-      {/* Background Decorative Blur */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-purple-200/40 blur-[140px] rounded-full pointer-events-none" />
 
       <div className="max-w-6xl mx-auto space-y-16 relative z-10">
-        {/* Header */}
-        <div className="text-center space-y-3">
+        <div ref={headRef} className="text-center space-y-3">
           <span className="text-xs font-mono font-bold text-[#6c47ff] uppercase tracking-wider">
             — Get In Touch
           </span>
@@ -48,10 +70,8 @@ export function ContactSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* Left Column: Contact Details & Academic References */}
+        <div ref={contentRef} className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-5 space-y-6">
-            {/* Contact Card */}
             <div className="p-8 rounded-[32px] bg-white border border-slate-200/80 shadow-xl space-y-6">
               <h3 className="text-xl font-extrabold text-slate-900 border-b border-slate-100 pb-4">
                 Contact Information
@@ -108,7 +128,6 @@ export function ContactSection() {
               </div>
             </div>
 
-            {/* Academic References Box */}
             <div className="p-8 rounded-[32px] bg-slate-900 text-white space-y-4 shadow-xl">
               <span className="text-xs font-mono font-bold text-purple-300 uppercase tracking-wider block">
                 Academic References
@@ -142,7 +161,6 @@ export function ContactSection() {
             </div>
           </div>
 
-          {/* Right Column: Interactive Form */}
           <div className="lg:col-span-7">
             <div className="p-8 sm:p-10 rounded-[32px] bg-white border border-slate-200/80 shadow-xl">
               {submitted ? (
