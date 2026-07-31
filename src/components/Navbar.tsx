@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -27,32 +28,32 @@ export function Navbar() {
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         {/* Brand Logo */}
-        <a href="#hero" className="flex items-center gap-3 group">
+        <Link href="/#hero" className="flex items-center gap-3 group">
           <div className="w-10 h-10 rounded-2xl bg-[#6c47ff] flex items-center justify-center font-bold text-white text-sm shadow-md shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
             PB
           </div>
           <span className="text-lg font-extrabold text-slate-900 tracking-tight">
             Pramudi<span className="text-[#6c47ff]">.</span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
-          <a href="#hero" className="hover:text-[#6c47ff] transition-colors">
+          <Link href="/#hero" className="hover:text-[#6c47ff] transition-colors">
             Home
-          </a>
-          <a href="#about" className="hover:text-[#6c47ff] transition-colors">
+          </Link>
+          <Link href="/#about" className="hover:text-[#6c47ff] transition-colors">
             About
-          </a>
-          <a href="#skills" className="hover:text-[#6c47ff] transition-colors">
+          </Link>
+          <Link href="/#skills" className="hover:text-[#6c47ff] transition-colors">
             Skills
-          </a>
-          <a href="#projects" className="hover:text-[#6c47ff] transition-colors">
+          </Link>
+          <Link href="/#projects" className="hover:text-[#6c47ff] transition-colors">
             Projects
-          </a>
-          <a href="#contact" className="hover:text-[#6c47ff] transition-colors">
+          </Link>
+          <Link href="/#contact" className="hover:text-[#6c47ff] transition-colors">
             Contact
-          </a>
+          </Link>
         </nav>
 
         {/* Right Action & Mobile Toggle */}
@@ -102,41 +103,41 @@ export function Navbar() {
       {/* Mobile Navigation Dropdown */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-slate-200 mt-3 pt-3 pb-2 flex flex-col gap-3 font-semibold text-slate-700 px-2">
-          <a
-            href="#hero"
+          <Link
+            href="/#hero"
             onClick={() => setMobileMenuOpen(false)}
             className="px-3 py-2 rounded-lg hover:bg-purple-50 hover:text-[#6c47ff] transition-colors text-sm"
           >
             Home
-          </a>
-          <a
-            href="#about"
+          </Link>
+          <Link
+            href="/#about"
             onClick={() => setMobileMenuOpen(false)}
             className="px-3 py-2 rounded-lg hover:bg-purple-50 hover:text-[#6c47ff] transition-colors text-sm"
           >
             About
-          </a>
-          <a
-            href="#skills"
+          </Link>
+          <Link
+            href="/#skills"
             onClick={() => setMobileMenuOpen(false)}
             className="px-3 py-2 rounded-lg hover:bg-purple-50 hover:text-[#6c47ff] transition-colors text-sm"
           >
             Skills
-          </a>
-          <a
-            href="#projects"
+          </Link>
+          <Link
+            href="/#projects"
             onClick={() => setMobileMenuOpen(false)}
             className="px-3 py-2 rounded-lg hover:bg-purple-50 hover:text-[#6c47ff] transition-colors text-sm"
           >
             Projects
-          </a>
-          <a
-            href="#contact"
+          </Link>
+          <Link
+            href="/#contact"
             onClick={() => setMobileMenuOpen(false)}
             className="px-3 py-2 rounded-lg hover:bg-purple-50 hover:text-[#6c47ff] transition-colors text-sm"
           >
             Contact
-          </a>
+          </Link>
         </div>
       )}
     </header>
