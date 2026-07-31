@@ -62,6 +62,7 @@ const projects = [
     year: "2025",
     accent: "bg-white",
     borderAccent: "hover:border-[#6c47ff]/40",
+    link: "/projects/medivibe",
   },
 ];
 
@@ -201,7 +202,7 @@ export function ProjectsSection() {
                     {project.year}
                   </span>
                   <a
-                    href="#contact"
+                    href={project.link || "#contact"}
                     className="text-xs font-bold text-[#6c47ff] flex items-center gap-1 group-hover:translate-x-1 transition-transform"
                   >
                     View Project ➔
