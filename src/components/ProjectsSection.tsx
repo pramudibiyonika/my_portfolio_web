@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -23,6 +24,7 @@ const projects = [
     year: "2026 (Ongoing)",
     accent: "bg-white",
     borderAccent: "hover:border-[#6c47ff]/40",
+    link: "/projects/cognitive-analytics",
   },
   {
     id: "02",
@@ -36,6 +38,7 @@ const projects = [
     year: "2026 (Ongoing)",
     accent: "bg-white",
     borderAccent: "hover:border-indigo-400/40",
+    link: "/projects/sinhala-sentiment",
   },
   {
     id: "03",
@@ -49,6 +52,7 @@ const projects = [
     year: "2026",
     accent: "bg-white",
     borderAccent: "hover:border-lime-400/40",
+    link: "/projects/sapro",
   },
   {
     id: "04",
@@ -137,78 +141,79 @@ export function ProjectsSection() {
             <div
               key={project.id}
               ref={(el) => { cardRefs.current[idx] = el; }}
-              className={`group rounded-[32px] bg-white border border-slate-200/90 ${project.borderAccent} shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col justify-between`}
             >
-              <div>
-                {/* Project Image Header */}
-                <div className="relative w-full h-56 overflow-hidden bg-slate-900">
-                  {project.image ? (
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-900 to-indigo-900 text-white font-bold text-lg">
-                      {project.title}
+              <Link
+                href={project.link}
+                className={`group rounded-[32px] bg-white border border-slate-200/90 ${project.borderAccent} shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col justify-between h-full block cursor-pointer`}
+              >
+                <div>
+                  {/* Project Image Header */}
+                  <div className="relative w-full h-56 overflow-hidden bg-slate-900">
+                    {project.image ? (
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-purple-900 to-indigo-900 text-white font-bold text-lg">
+                        {project.title}
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                    
+                    {/* Number Badge */}
+                    <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/95 border border-slate-200 flex items-center justify-center text-xs font-extrabold text-[#6c47ff] font-mono shadow-md">
+                      {project.id}
                     </div>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
-                  
-                  {/* Number Badge */}
-                  <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/95 border border-slate-200 flex items-center justify-center text-xs font-extrabold text-[#6c47ff] font-mono shadow-md">
-                    {project.id}
+                    
+                    {/* Type Badge */}
+                    <div className={`absolute top-4 right-4 px-3.5 py-1.5 rounded-full text-xs font-extrabold shadow-sm ${project.typeColor}`}>
+                      {project.type}
+                    </div>
                   </div>
-                  
-                  {/* Type Badge */}
-                  <div className={`absolute top-4 right-4 px-3.5 py-1.5 rounded-full text-xs font-extrabold shadow-sm ${project.typeColor}`}>
-                    {project.type}
-                  </div>
-                </div>
 
-                {/* Card Content */}
-                <div className="p-8 space-y-4 text-left">
-                  <div className="space-y-1">
-                    <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 group-hover:text-[#6c47ff] transition-colors leading-tight">
-                      {project.title}
-                    </h3>
-                    <p className="text-xs font-bold text-[#6c47ff] font-mono">
-                      {project.subtitle}
+                  {/* Card Content */}
+                  <div className="p-8 space-y-4 text-left">
+                    <div className="space-y-1">
+                      <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 group-hover:text-[#6c47ff] transition-colors leading-tight">
+                        {project.title}
+                      </h3>
+                      <p className="text-xs font-bold text-[#6c47ff] font-mono">
+                        {project.subtitle}
+                      </p>
+                    </div>
+
+                    <p className="text-slate-600 text-sm leading-relaxed font-normal">
+                      {project.desc}
                     </p>
                   </div>
-
-                  <p className="text-slate-600 text-sm leading-relaxed font-normal">
-                    {project.desc}
-                  </p>
                 </div>
-              </div>
 
-              {/* Card Footer: Tech Badges & Year */}
-              <div className="px-8 pb-8 pt-4 border-t border-slate-100 space-y-4">
-                <div className="flex flex-wrap gap-1.5">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200/60 text-slate-800 text-[11px] font-semibold"
-                    >
-                      {tag}
+                {/* Card Footer: Tech Badges & Year */}
+                <div className="px-8 pb-8 pt-4 border-t border-slate-100 space-y-4">
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2.5 py-1 rounded-md bg-slate-100 border border-slate-200/60 text-slate-800 text-[11px] font-semibold"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center justify-between pt-2">
+                    <span className="text-xs font-bold text-slate-500 font-mono">
+                      {project.year}
                     </span>
-                  ))}
+                    <span className="text-xs font-bold text-[#6c47ff] flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                      View Project Details ➔
+                    </span>
+                  </div>
                 </div>
-
-                <div className="flex items-center justify-between pt-2">
-                  <span className="text-xs font-bold text-slate-500 font-mono">
-                    {project.year}
-                  </span>
-                  <a
-                    href={project.link || "#contact"}
-                    className="text-xs font-bold text-[#6c47ff] flex items-center gap-1 group-hover:translate-x-1 transition-transform"
-                  >
-                    View Project ➔
-                  </a>
-                </div>
-              </div>
+              </Link>
             </div>
           ))}
         </div>
