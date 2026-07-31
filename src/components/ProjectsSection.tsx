@@ -23,6 +23,7 @@ const projects = [
     year: "2026 (Ongoing)",
     accent: "bg-white",
     borderAccent: "hover:border-[#6c47ff]/40",
+    link: "/projects/cognitive-analytics",
   },
   {
     id: "02",
@@ -36,6 +37,7 @@ const projects = [
     year: "2026 (Ongoing)",
     accent: "bg-white",
     borderAccent: "hover:border-indigo-400/40",
+    link: "/projects/sinhala-sentiment",
   },
   {
     id: "03",
@@ -49,6 +51,7 @@ const projects = [
     year: "2026",
     accent: "bg-white",
     borderAccent: "hover:border-lime-400/40",
+    link: "/projects/sapro",
   },
   {
     id: "04",
